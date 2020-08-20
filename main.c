@@ -48,13 +48,14 @@ int main(void) {
     }
 
     time_t start, end;		// Record the time taken in each round of play
-		time(&start);
+		time(&start); 
+    
     int moveCounter=0;  //counts the number of moves
 
     int playerEntry=1;
 
     //main game loop. only broken when the player enters 0, or wins by putting the random table in order
-    while(playerEntry != 0){ 
+    while(playerEntry != 0){
 
         system("clear"); //clear the screen to reprint the table with new moves
 
@@ -119,7 +120,7 @@ int main(void) {
       int down = zero_location + cols;
       int up = zero_location - cols;
 
-      if(right == num_location || left == num_location || down == num_location || up == num_location){
+      if(num_location == right || num_location == left || num_location == down || num_location == up){
         if ((zero_location+1) % cols == 0 && num_location == right){
           printf("\nNumber cannot be moved");
         }
@@ -153,8 +154,9 @@ int main(void) {
           }
         }
         if (counter1==size-1){
+            time(&end);
             double t = difftime(end,start);
-						printf("\nExcellent!!! you solved it with %d guesses, in %3.0f seconds.\n",moveCounter, t); 
+						printf("\nExcellent!!! you solved it with %d guesses, in %.1f seconds.\n",moveCounter, t); 
             playerEntry=0;
         }
         break;
